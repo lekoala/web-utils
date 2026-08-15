@@ -1,0 +1,95 @@
+{
+  "name": "@lekoala/web-utils",
+  "version": "0.1.0",
+  "description": "Small zero-dependency browser utilities",
+  "type": "module",
+  "license": "MIT",
+  "author": "LeKoala",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lekoala/web-utils.git"
+  },
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    "./array": {
+      "types": "./types/array.d.ts",
+      "import": "./src/array.js"
+    },
+    "./string": {
+      "types": "./types/string.d.ts",
+      "import": "./src/string.js"
+    },
+    "./value": {
+      "types": "./types/value.d.ts",
+      "import": "./src/value.js"
+    },
+    "./timing": {
+      "types": "./types/timing.d.ts",
+      "import": "./src/timing.js"
+    },
+    "./url": {
+      "types": "./types/url.d.ts",
+      "import": "./src/url.js"
+    },
+    "./form": {
+      "types": "./types/form.d.ts",
+      "import": "./src/form.js"
+    },
+    "./dom": {
+      "types": "./types/dom.d.ts",
+      "import": "./src/dom.js"
+    },
+    "./dom/attrs": {
+      "types": "./types/dom/attrs.d.ts",
+      "import": "./src/dom/attrs.js"
+    },
+    "./dom/classes": {
+      "types": "./types/dom/classes.d.ts",
+      "import": "./src/dom/classes.js"
+    },
+    "./dom/create": {
+      "types": "./types/dom/create.d.ts",
+      "import": "./src/dom/create.js"
+    },
+    "./dom/events": {
+      "types": "./types/dom/events.d.ts",
+      "import": "./src/dom/events.js"
+    },
+    "./dom/query": {
+      "types": "./types/dom/query.d.ts",
+      "import": "./src/dom/query.js"
+    },
+    "./dom/ready": {
+      "types": "./types/dom/ready.d.ts",
+      "import": "./src/dom/ready.js"
+    },
+    "./custom-elements": {
+      "types": "./types/custom-elements.d.ts",
+      "import": "./src/custom-elements.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "types",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "types": "tsc -p tsconfig.types.json",
+    "typecheck": "tsc -p tsconfig.check.json",
+    "lint": "biome check src test",
+    "lint:fix": "biome check --write src test",
+    "check": "npm run typecheck && npm run test && npm run lint && npm run types",
+    "prepack": "npm run check"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.8",
+    "typescript": "^5.8.0"
+  }
+}
