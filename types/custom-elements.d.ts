@@ -7,4 +7,4 @@
  * @param {CustomElementRegistry | undefined} [registry]
  * @returns {boolean} true when a definition was registered
  */
-export function defineCustomElement(name: string, ctor: CustomElementConstructor, registry?: CustomElementRegistry | undefined): boolean;
+export declare function defineCustomElement(name: string, ctor: CustomElementConstructor, registry?: CustomElementRegistry | undefined): boolean;

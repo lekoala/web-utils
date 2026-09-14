@@ -6,4 +6,4 @@
  * @param {Document} [doc]
  * @returns {() => void} cleanup function when waiting, otherwise a no-op
  */
-export function domReady(callback: () => void, doc?: Document): () => void;
+export declare function domReady(callback: () => void, doc?: Document): () => void;

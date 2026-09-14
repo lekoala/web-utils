@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { html } from "@lekoala/web-utils/dom/html";
 import { on } from "@lekoala/web-utils/dom/events";
+import { html } from "@lekoala/web-utils/dom/html";
 import { qs } from "@lekoala/web-utils/dom/query";
 import { debounce } from "@lekoala/web-utils/timing";
 

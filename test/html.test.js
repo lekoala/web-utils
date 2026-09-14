@@ -1,6 +1,6 @@
-import { GlobalRegistrator } from "@happy-dom/global-registrator";
 import assert from "node:assert/strict";
 import test from "node:test";
+import { GlobalRegistrator } from "@happy-dom/global-registrator";
 
 GlobalRegistrator.register({ url: "http://localhost/" });
 

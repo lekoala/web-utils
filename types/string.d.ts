@@ -13,7 +13,7 @@
  * @param {string} value
  * @returns {string}
  */
-export function camelize(value: string): string;
+export declare function camelize(value: string): string;
 /**
  * Convert `-` followed by a lowercase letter or digit to camel case.
  * Uppercase after a dash, `_`, or `.` are left untouched.
@@ -26,7 +26,7 @@ export function camelize(value: string): string;
  * @param {string} value
  * @returns {string}
  */
-export function dashToCamel(value: string): string;
+export declare function dashToCamel(value: string): string;
 /**
  * Convert camel case to dash case.
  * A `-` is inserted before each uppercase letter preceded by a lowercase letter or
@@ -40,7 +40,7 @@ export function dashToCamel(value: string): string;
  * @param {string} value
  * @returns {string}
  */
-export function camelToDash(value: string): string;
+export declare function camelToDash(value: string): string;
 /**
  * Replace {key} placeholders with values from a flat object.
  * Unknown placeholders are preserved by default.
@@ -50,7 +50,7 @@ export function camelToDash(value: string): string;
  * @param {{ missing?: "keep" | "empty" }} [options]
  * @returns {string}
  */
-export function interpolate(template: string, values: Record<string, unknown>, options?: {
+export declare function interpolate(template: string, values: Record<string, unknown>, options?: {
     missing?: "keep" | "empty";
 }): string;
 /**
@@ -59,9 +59,9 @@ export function interpolate(template: string, values: Record<string, unknown>, o
  * @param {string} value
  * @returns {string}
  */
-export function stripDiacritics(value: string): string;
+export declare function stripDiacritics(value: string): string;
 /**
  * @param {string} value
  * @returns {string}
  */
-export function slugify(value: string): string;
+export declare function slugify(value: string): string;

@@ -7,7 +7,7 @@ const templateCache = new WeakMap();
  */
 function isIterable(value) {
   if (value == null || typeof value === "string") return false;
-  return typeof /** @type {{ [Symbol.iterator]?: unknown }} */ (value)[Symbol.iterator] === "function";
+  return typeof (/** @type {{ [Symbol.iterator]?: unknown }} */ (value)[Symbol.iterator]) === "function";
 }
 
 /**

@@ -9,7 +9,7 @@
  * @param {boolean | AddEventListenerOptions} [options]
  * @returns {() => void}
  */
-export function on(target: EventTarget, types: string | string[], listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): () => void;
+export declare function on(target: EventTarget, types: string | string[], listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): () => void;
 /**
  * @param {EventTarget} target
  * @param {string | string[]} types
@@ -17,7 +17,7 @@ export function on(target: EventTarget, types: string | string[], listener: Even
  * @param {boolean | EventListenerOptions} [options]
  * @returns {void}
  */
-export function off(target: EventTarget, types: string | string[], listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+export declare function off(target: EventTarget, types: string | string[], listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 /**
  * @param {EventTarget} target
  * @param {string | string[]} types
@@ -25,7 +25,7 @@ export function off(target: EventTarget, types: string | string[], listener: Eve
  * @param {AddEventListenerOptions} [options]
  * @returns {() => void}
  */
-export function once(target: EventTarget, types: string | string[], listener: EventListenerOrEventListenerObject, options?: AddEventListenerOptions): () => void;
+export declare function once(target: EventTarget, types: string | string[], listener: EventListenerOrEventListenerObject, options?: AddEventListenerOptions): () => void;
 /**
  * Dispatch a CustomEvent and return EventTarget.dispatchEvent()'s boolean result.
  *
@@ -36,4 +36,4 @@ export function once(target: EventTarget, types: string | string[], listener: Ev
  * @param {Omit<CustomEventInit<T>, "detail">} [options]
  * @returns {boolean}
  */
-export function dispatch<T>(target: EventTarget, type: string, detail?: T, options?: Omit<CustomEventInit<T>, "detail">): boolean;
+export declare function dispatch<T>(target: EventTarget, type: string, detail?: T, options?: Omit<CustomEventInit<T>, "detail">): boolean;

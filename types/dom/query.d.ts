@@ -1,36 +1,10 @@
-/**
- * @template {keyof HTMLElementTagNameMap} K
- * @overload
- * @param {K} selector
- * @param {ParentNode} [root]
- * @returns {HTMLElementTagNameMap[K] | null}
- */
-export function qs<K extends keyof HTMLElementTagNameMap>(selector: K, root?: ParentNode | undefined): HTMLElementTagNameMap[K] | null;
-/**
- * @overload
- * @param {string} selector
- * @param {ParentNode} [root]
- * @returns {Element | null}
- */
-export function qs(selector: string, root?: ParentNode | undefined): Element | null;
-/**
- * @template {keyof HTMLElementTagNameMap} K
- * @overload
- * @param {K} selector
- * @param {ParentNode} [root]
- * @returns {HTMLElementTagNameMap[K][]}
- */
-export function qsa<K extends keyof HTMLElementTagNameMap>(selector: K, root?: ParentNode | undefined): HTMLElementTagNameMap[K][];
-/**
- * @overload
- * @param {string} selector
- * @param {ParentNode} [root]
- * @returns {Element[]}
- */
-export function qsa(selector: string, root?: ParentNode | undefined): Element[];
+export declare function qs<K extends keyof HTMLElementTagNameMap>(selector: K, root?: ParentNode): HTMLElementTagNameMap[K] | null;
+export declare function qs(selector: string, root?: ParentNode): Element | null;
+export declare function qsa<K extends keyof HTMLElementTagNameMap>(selector: K, root?: ParentNode): HTMLElementTagNameMap[K][];
+export declare function qsa(selector: string, root?: ParentNode): Element[];
 /**
  * @param {string} id
  * @param {Document} [root]
  * @returns {HTMLElement | null}
  */
-export function byId(id: string, root?: Document): HTMLElement | null;
+export declare function byId(id: string, root?: Document): HTMLElement | null;

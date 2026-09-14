@@ -1,6 +1,13 @@
 /**
  * @typedef {((...args: any[]) => void) & { cancel: () => void }} CancelableFunction
  */
+export type CancelableFunction = ((...args: any[]) => void) & {
+    cancel: () => void;
+};
+export type DebouncedFunction = ((...args: any[]) => void) & {
+    cancel: () => void;
+    flush: () => void;
+};
 /**
  * @typedef {((...args: any[]) => void) & { cancel: () => void, flush: () => void }} DebouncedFunction
  */
@@ -12,7 +19,7 @@
  * @param {number} [delay]
  * @returns {DebouncedFunction}
  */
-export function debounce(fn: (...args: any[]) => void, delay?: number): DebouncedFunction;
+export declare function debounce(fn: (...args: any[]) => void, delay?: number): DebouncedFunction;
 /**
  * Run immediately, then ignore calls until the quiet period has elapsed.
  *
@@ -20,7 +27,7 @@ export function debounce(fn: (...args: any[]) => void, delay?: number): Debounce
  * @param {number} [delay]
  * @returns {CancelableFunction}
  */
-export function debounceLeading(fn: (...args: any[]) => void, delay?: number): CancelableFunction;
+export declare function debounceLeading(fn: (...args: any[]) => void, delay?: number): CancelableFunction;
 /**
  * Run at most once per interval. The first call runs immediately.
  *
@@ -28,7 +35,7 @@ export function debounceLeading(fn: (...args: any[]) => void, delay?: number): C
  * @param {number} [interval]
  * @returns {(...args: any[]) => void}
  */
-export function throttle(fn: (...args: any[]) => void, interval?: number): (...args: any[]) => void;
+export declare function throttle(fn: (...args: any[]) => void, interval?: number): (...args: any[]) => void;
 /**
  * Collapse repeated calls into the next animation frame.
  * The browser APIs are resolved at call time, so importing this module is SSR-safe.
@@ -36,11 +43,4 @@ export function throttle(fn: (...args: any[]) => void, interval?: number): (...a
  * @param {(...args: any[]) => void} fn
  * @returns {CancelableFunction}
  */
-export function debounceFrame(fn: (...args: any[]) => void): CancelableFunction;
-export type CancelableFunction = ((...args: any[]) => void) & {
-    cancel: () => void;
-};
-export type DebouncedFunction = ((...args: any[]) => void) & {
-    cancel: () => void;
-    flush: () => void;
-};
+export declare function debounceFrame(fn: (...args: any[]) => void): CancelableFunction;

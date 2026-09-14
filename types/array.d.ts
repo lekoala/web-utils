@@ -5,4 +5,4 @@
  * @param {T | T[]} value
  * @returns {T[]}
  */
-export function toArray<T>(value: T | T[]): T[];
+export declare function toArray<T>(value: T | T[]): T[];

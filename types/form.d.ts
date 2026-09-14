@@ -4,4 +4,4 @@
  * @param {FormData} formData
  * @returns {Record<string, FormDataEntryValue | FormDataEntryValue[]>}
  */
-export function formDataToObject(formData: FormData): Record<string, FormDataEntryValue | FormDataEntryValue[]>;
+export declare function formDataToObject(formData: FormData): Record<string, FormDataEntryValue | FormDataEntryValue[]>;

@@ -1,3 +1,9 @@
+/**
+ * DOM-only convenience barrel. Every helper accepts explicit roots/documents
+ * where that makes sense; browser globals are resolved at call time.
+ *
+ * @module
+ */
 export * from "./dom/attrs.js";
 export * from "./dom/classes.js";
 export * from "./dom/create.js";

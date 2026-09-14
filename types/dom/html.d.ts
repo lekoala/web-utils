@@ -1,12 +1,4 @@
 /**
- * Minimal safe HTML tagged template.
- *
- * @type {typeof htmlTag & { one: typeof htmlOne }}
- */
-export const html: typeof htmlTag & {
-    one: typeof htmlOne;
-};
-/**
  * Create a detached DocumentFragment from static HTML plus safe dynamic child content.
  * Dynamic values never enter `innerHTML`: they are inserted afterwards as text or DOM.
  *
@@ -27,4 +19,12 @@ declare function htmlTag(strings: TemplateStringsArray, ...values: unknown[]): D
  * @returns {Element}
  */
 declare function htmlOne(strings: TemplateStringsArray, ...values: unknown[]): Element;
+/**
+ * Minimal safe HTML tagged template.
+ *
+ * @type {typeof htmlTag & { one: typeof htmlOne }}
+ */
+export declare const html: typeof htmlTag & {
+    one: typeof htmlOne;
+};
 export {};
