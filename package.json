@@ -1,14 +1,17 @@
 {
   "name": "@lekoala/web-utils",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Small zero-dependency browser utilities",
   "type": "module",
   "license": "MIT",
   "author": "LeKoala",
+  "packageManager": "bun@1.4.2",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lekoala/web-utils.git"
   },
+  "homepage": "https://github.com/lekoala/web-utils",
+  "bugs": "https://github.com/lekoala/web-utils/issues",
   "sideEffects": false,
   "publishConfig": {
     "access": "public"
@@ -58,6 +61,10 @@
       "types": "./types/dom/events.d.ts",
       "import": "./src/dom/events.js"
     },
+    "./dom/html": {
+      "types": "./types/dom/html.d.ts",
+      "import": "./src/dom/html.js"
+    },
     "./dom/query": {
       "types": "./types/dom/query.d.ts",
       "import": "./src/dom/query.js"
@@ -81,15 +88,17 @@
   ],
   "scripts": {
     "test": "node --test",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "typecheck": "tsc -p jsconfig.json",
     "types": "tsc -p tsconfig.types.json",
-    "typecheck": "tsc -p tsconfig.check.json",
-    "lint": "biome check src test",
-    "lint:fix": "biome check --write src test",
-    "check": "npm run typecheck && npm run test && npm run lint && npm run types",
-    "prepack": "npm run check"
+    "verify": "bun run lint && bun run typecheck && bun run test && bun run types",
+    "check": "bun run verify",
+    "prepack": "bun run verify"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.5.8",
-    "typescript": "^5.8.0"
+    "@biomejs/biome": "^2.5.12",
+    "@happy-dom/global-registrator": "^20.14.0",
+    "typescript": "^7.0.2"
   }
 }

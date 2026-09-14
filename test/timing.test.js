@@ -77,3 +77,14 @@ test("debounceFrame.cancel discards the scheduled call", () => {
     raf.restore();
   }
 });
+
+test("debounce.flush runs the pending call immediately", () => {
+  const calls = [];
+  const fn = debounce((value) => calls.push(value), 1000);
+  fn(1);
+  fn(2);
+  fn.flush();
+  assert.deepEqual(calls, [2]);
+  fn.flush();
+  assert.deepEqual(calls, [2]);
+});

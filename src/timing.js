@@ -3,21 +3,30 @@
  */
 
 /**
+ * @typedef {((...args: any[]) => void) & { cancel: () => void, flush: () => void }} DebouncedFunction
+ */
+
+/**
  * Run only after calls have stopped for `delay` ms.
+ * `cancel()` drops a pending invocation; `flush()` runs it immediately.
  *
  * @param {(...args: any[]) => void} fn
  * @param {number} [delay]
- * @returns {CancelableFunction}
+ * @returns {DebouncedFunction}
  */
 export function debounce(fn, delay = 300) {
   /** @type {ReturnType<typeof setTimeout> | undefined} */
   let timer;
+  /** @type {any[] | undefined} */
+  let lastArgs;
 
-  /** @type {CancelableFunction} */
+  /** @type {DebouncedFunction} */
   const debounced = (...args) => {
+    lastArgs = args;
     if (timer !== undefined) clearTimeout(timer);
     timer = setTimeout(() => {
       timer = undefined;
+      lastArgs = undefined;
       fn(...args);
     }, delay);
   };
@@ -25,6 +34,16 @@ export function debounce(fn, delay = 300) {
   debounced.cancel = () => {
     if (timer !== undefined) clearTimeout(timer);
     timer = undefined;
+    lastArgs = undefined;
+  };
+
+  debounced.flush = () => {
+    if (timer === undefined) return;
+    clearTimeout(timer);
+    timer = undefined;
+    const args = lastArgs ?? [];
+    lastArgs = undefined;
+    fn(...args);
   };
 
   return debounced;

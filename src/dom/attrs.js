@@ -58,6 +58,46 @@ export function toggleAttr(element, name, force) {
 }
 
 /**
+ * Parse the common declarative boolean-attribute spellings.
+ * A bare attribute, "true" and "1" are true; everything else is false.
+ * Missing attributes should normally be handled with hasAttr() first when
+ * absence and false need to stay distinct.
+ *
+ * @param {string | null | undefined} value
+ * @returns {boolean}
+ */
+export function parseBooleanAttribute(value) {
+  return value === "" || value === "true" || value === "1";
+}
+
+/**
+ * Parse a comma-separated list of integers, dropping empty and invalid entries.
+ *
+ * @param {string | null | undefined} value
+ * @returns {number[]}
+ */
+export function parseIntegerListAttribute(value) {
+  if (value == null || value === "") return [];
+  return String(value)
+    .split(",")
+    .map((item) => Number.parseInt(item.trim(), 10))
+    .filter((item) => Number.isFinite(item));
+}
+
+/**
+ * Validate a declarative string value against an allow-list.
+ *
+ * @template {string} T
+ * @param {string | null | undefined} value
+ * @param {readonly T[]} allowed
+ * @param {T} fallback
+ * @returns {T}
+ */
+export function parseEnumAttribute(value, allowed, fallback) {
+  return allowed.includes(/** @type {T} */ (value)) ? /** @type {T} */ (value) : fallback;
+}
+
+/**
  * @param {HTMLElement} element
  * @param {string} name camelCase dataset key
  * @returns {string | undefined}

@@ -1,6 +1,15 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { getBoolData, removeAttr, setAttr, setData, toggleAttr } from "../src/dom/attrs.js";
+import {
+  getBoolData,
+  parseBooleanAttribute,
+  parseEnumAttribute,
+  parseIntegerListAttribute,
+  removeAttr,
+  setAttr,
+  setData,
+  toggleAttr,
+} from "../src/dom/attrs.js";
 import { addClass, removeClass, toggleClass } from "../src/dom/classes.js";
 import { ce, insertAfter, parseHTML } from "../src/dom/create.js";
 import { dispatch, on, once } from "../src/dom/events.js";
@@ -59,6 +68,17 @@ test("attribute and dataset helpers support map assignment", () => {
   assert.equal(element.hasAttribute("hidden"), false);
   assert.equal(getBoolData(element, "enabled"), true);
   assert.equal(element.dataset.count, "2");
+});
+
+test("declarative attribute parsers stay small and predictable", () => {
+  assert.equal(parseBooleanAttribute(""), true);
+  assert.equal(parseBooleanAttribute("true"), true);
+  assert.equal(parseBooleanAttribute("1"), true);
+  assert.equal(parseBooleanAttribute("false"), false);
+  assert.deepEqual(parseIntegerListAttribute("1, 2, nope, 4"), [1, 2, 4]);
+  assert.deepEqual(parseIntegerListAttribute(null), []);
+  assert.equal(parseEnumAttribute("end", ["start", "end"], "start"), "end");
+  assert.equal(parseEnumAttribute("other", ["start", "end"], "start"), "start");
 });
 
 test("toggleAttr and setData deletion respect native semantics", () => {

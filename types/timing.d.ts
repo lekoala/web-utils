@@ -2,13 +2,17 @@
  * @typedef {((...args: any[]) => void) & { cancel: () => void }} CancelableFunction
  */
 /**
+ * @typedef {((...args: any[]) => void) & { cancel: () => void, flush: () => void }} DebouncedFunction
+ */
+/**
  * Run only after calls have stopped for `delay` ms.
+ * `cancel()` drops a pending invocation; `flush()` runs it immediately.
  *
  * @param {(...args: any[]) => void} fn
  * @param {number} [delay]
- * @returns {CancelableFunction}
+ * @returns {DebouncedFunction}
  */
-export function debounce(fn: (...args: any[]) => void, delay?: number): CancelableFunction;
+export function debounce(fn: (...args: any[]) => void, delay?: number): DebouncedFunction;
 /**
  * Run immediately, then ignore calls until the quiet period has elapsed.
  *
@@ -35,4 +39,8 @@ export function throttle(fn: (...args: any[]) => void, interval?: number): (...a
 export function debounceFrame(fn: (...args: any[]) => void): CancelableFunction;
 export type CancelableFunction = ((...args: any[]) => void) & {
     cancel: () => void;
+};
+export type DebouncedFunction = ((...args: any[]) => void) & {
+    cancel: () => void;
+    flush: () => void;
 };
