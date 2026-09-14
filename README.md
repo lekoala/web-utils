@@ -27,12 +27,12 @@ New helpers should be generic, useful across projects, keep a small surface, fol
 
 Importing any module is SSR-safe: no module touches the DOM, globals, or observers at import time. A few helpers are browser-only at call time when their implicit default is used.
 
-| Subpath | Browser-only when calling without |
-| --- | --- |
-| `dom/*` | an explicit `root` / `doc` / `parent` where supported |
-| `custom-elements` | an explicit `registry` |
-| `url.isExternalUrl` | an explicit `base` (needs `location`) |
-| `form` | works in any runtime with `FormData` |
+| Subpath             | Browser-only when calling without                     |
+|---------------------|-------------------------------------------------------|
+| `dom/*`             | an explicit `root` / `doc` / `parent` where supported |
+| `custom-elements`   | an explicit `registry`                                |
+| `url.isExternalUrl` | an explicit `base` (needs `location`)                 |
+| `form`              | works in any runtime with `FormData`                  |
 
 ## Install
 
@@ -126,22 +126,22 @@ button.className = variant;
 
 ## Public subpaths
 
-| Subpath | Main helpers |
-| --- | --- |
-| `array` | `toArray` |
-| `string` | `camelize`, `dashToCamel`, `camelToDash`, `interpolate`, `stripDiacritics`, `slugify` |
-| `value` | `toBool`, `toInt`, `toFloat`, `stringToValue` |
-| `timing` | `debounce` (`cancel`, `flush`), `debounceLeading`, `throttle`, `debounceFrame` |
-| `url` | `appendParams`, `isExternalUrl` |
-| `form` | `formDataToObject` |
-| `dom/query` | `qs`, `qsa`, `byId` |
-| `dom/create` | `ce`, `insertAfter`, `parseHTML` |
-| `dom/html` | `html`, `html.one` |
-| `dom/attrs` | attribute/dataset helpers plus declarative value parsers |
-| `dom/classes` | class helpers |
-| `dom/events` | `on`, `off`, `once`, `dispatch` |
-| `dom/ready` | `domReady` |
-| `custom-elements` | `defineCustomElement` |
+| Subpath           | Main helpers                                                                          |
+|-------------------|---------------------------------------------------------------------------------------|
+| `array`           | `toArray`                                                                             |
+| `string`          | `camelize`, `dashToCamel`, `camelToDash`, `interpolate`, `stripDiacritics`, `slugify` |
+| `value`           | `toBool`, `toInt`, `toFloat`, `stringToValue`                                         |
+| `timing`          | `debounce` (`cancel`, `flush`), `debounceLeading`, `throttle`, `debounceFrame`        |
+| `url`             | `appendParams`, `isExternalUrl`                                                       |
+| `form`            | `formDataToObject`                                                                    |
+| `dom/query`       | `qs`, `qsa`, `byId`                                                                   |
+| `dom/create`      | `ce`, `insertAfter`, `parseHTML`                                                      |
+| `dom/html`        | `html`, `html.one`                                                                    |
+| `dom/attrs`       | attribute/dataset helpers plus declarative value parsers                              |
+| `dom/classes`     | class helpers                                                                         |
+| `dom/events`      | `on`, `off`, `once`, `dispatch`                                                       |
+| `dom/ready`       | `domReady`                                                                            |
+| `custom-elements` | `defineCustomElement`                                                                 |
 
 ## Attribute parsing
 
@@ -161,17 +161,17 @@ They remain pure functions: they parse values but do not impose component defaul
 
 The naming helpers are intentionally narrow. Verified behavior:
 
-| Input | `camelize` | `dashToCamel` | `camelToDash` |
-| --- | --- | --- | --- |
-| `foo-bar` | `fooBar` | `fooBar` | — |
-| `foo_bar` | `fooBar` | `foo_bar` | — |
-| `foo.bar` | `fooBar` | `foo.bar` | — |
-| `URL value` | `urlValue` | — | — |
-| `hello-` | `hello-` | — | — |
-| `fooBar` | — | — | `foo-bar` |
-| `fooBAR` | — | — | `foo-bar` |
-| `URLValue` | — | — | `urlvalue` |
-| `fooBarURL` | — | — | `foo-bar-url` |
+| Input       | `camelize` | `dashToCamel` | `camelToDash` |
+|-------------|------------|---------------|---------------|
+| `foo-bar`   | `fooBar`   | `fooBar`      | —             |
+| `foo_bar`   | `fooBar`   | `foo_bar`     | —             |
+| `foo.bar`   | `fooBar`   | `foo.bar`     | —             |
+| `URL value` | `urlValue` | —             | —             |
+| `hello-`    | `hello-`   | —             | —             |
+| `fooBar`    | —          | —             | `foo-bar`     |
+| `fooBAR`    | —          | —             | `foo-bar`     |
+| `URLValue`  | —          | —             | `urlvalue`    |
+| `fooBarURL` | —          | —             | `foo-bar-url` |
 
 ## Development
 
